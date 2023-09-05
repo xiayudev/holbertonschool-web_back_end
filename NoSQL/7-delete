@@ -1,0 +1,4 @@
+// Deletes all document with a new attribute
+db.school.deleteMany(
+    { name: 'Holberton school' }
+)
