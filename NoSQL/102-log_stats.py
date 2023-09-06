@@ -30,7 +30,7 @@ if __name__ == "__main__":
     ips = dict()
     results = collection.find({})
     for result in results:
-        if ips.get(result['ip']) is None:
+        if ips.get(result['ip'], "Not found") == "Not found":
             ips[result['ip']] = 0
         else:
             ips[result['ip']] += 1
@@ -38,5 +38,7 @@ if __name__ == "__main__":
     ips_sorted = sorted(list(ips.items()), key=lambda x: x[1], reverse=True)
     print("IPs:")
     if ips_sorted:
-        for ip in range(10):
-            print("\t{}: {}".format(ips_sorted[ip][0], ips_sorted[ip][1]))
+        for i, ip in enumerate(ips_sorted):
+            if i > 9:
+                break
+            print("\t{}: {}".format(ip[0], ip[1]))
