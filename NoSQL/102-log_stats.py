@@ -37,5 +37,6 @@ if __name__ == "__main__":
 
     ips_sorted = sorted(list(ips.items()), key=lambda x: x[1], reverse=True)
     print("IPs:")
-    for ip in range(10):
-        print("\t{}: {}".format(ips_sorted[ip][0], ips_sorted[ip][1]))
+    if ips_sorted:
+        for ip in range(10):
+            print("\t{}: {}".format(ips_sorted[ip][0], ips_sorted[ip][1]))
