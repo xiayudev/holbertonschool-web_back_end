@@ -31,7 +31,7 @@ if __name__ == "__main__":
     results = collection.find({})
     for result in results:
         if ips.get(result['ip'], "Not found") == "Not found":
-            ips[result['ip']] = 0
+            ips[result['ip']] = 1
         else:
             ips[result['ip']] += 1
 
