@@ -41,7 +41,7 @@ class Server:
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """return a dictionary with some values"""
-        assert index < page_size and index < len(self.dataset())
+        assert index < page_size + index and index < len(self.dataset())
         data = []
         iterator = index
         while True:
