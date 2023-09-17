@@ -1,15 +1,18 @@
 /* eslint-disable no-underscore-dangle */
 export default class HolbertonCourse {
   constructor(name, length, students) {
-    if (typeof name === 'string') {
-      this._name = name;
+    if (typeof name !== 'string') {
+      throw new TypeError('Name must be a string');
     }
-    if (typeof length === 'number') {
-      this._length = length;
+    this._name = name;
+    if (typeof length !== 'number') {
+      throw new TypeError('Length must be a number');
     }
-    if (typeof students === 'object') {
-      this._students = students;
+    this._length = length;
+    if (typeof students !== 'object') {
+      throw new TypeError('Students must be an object');
     }
+    this._students = students;
   }
 
   get name() { return this._name; }
