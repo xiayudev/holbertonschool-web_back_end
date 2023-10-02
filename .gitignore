@@ -5,3 +5,8 @@ __pycache__
 .mypy_cache
 node_modules
 package-lock.json
+.vscode
+babel.config.js
+.eslintrc.js
+package.json
+utils.js
