@@ -7,5 +7,6 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
     .then((response) => {
       const data = [...response];
       data[0].value = `Error: ${data[0].value.message}`;
+      return data;
     });
 }
