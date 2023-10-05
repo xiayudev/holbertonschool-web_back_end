@@ -9,7 +9,8 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
       responses.forEach((resp) => {
         if (resp.reason) {
           const {name, message} = resp.reason;
-          resp.reason = `${name}: ${message}`;
+          delete resp.reason;
+          resp.value = `${name}: ${message}`;
         }
       });
       return responses;
