@@ -1,12 +1,17 @@
 import signUpUser from './4-user-promise';
 import uploadPhoto from './5-photo-reject';
 
+/* eslint-disable */
 export default function handleProfileSignup(firstName, lastName, fileName) {
-  return Promise.allSettled([uploadPhoto(fileName).catch((err) => err),
-    signUpUser(firstName, lastName).catch((err) => err)])
+  return Promise.allSettled([uploadPhoto(fileName), signUpUser(firstName, lastName)])
     .then((response) => {
-      const data = [...response];
-      data[0].value = `Error: ${data[0].value.message}`;
-      return data;
+      const responses = [...response];
+      responses.forEach((resp) => {
+        if (resp.reason) {
+          const {name, message} = resp.reason;
+          resp.reason = `${name}: ${message}`;
+        }
+      });
+      return responses;
     });
 }
